@@ -875,6 +875,9 @@ body.dashmode .helpbub{left:auto; right:16px}
     </div>
 
     <div class="topright">
+      <a class="xlink" href="https://x.com/PUPScompanions" target="_blank" rel="noopener noreferrer" aria-label="PUPS on X" title="PUPS on X">
+        <svg viewBox="0 0 9 9" shape-rendering="crispEdges" aria-hidden="true"><rect x="0" y="0" width="2" height="1"/><rect x="1" y="1" width="2" height="1"/><rect x="2" y="2" width="2" height="1"/><rect x="3" y="3" width="3" height="1"/><rect x="3" y="4" width="3" height="1"/><rect x="3" y="5" width="3" height="1"/><rect x="5" y="6" width="2" height="1"/><rect x="6" y="7" width="2" height="1"/><rect x="7" y="8" width="2" height="1"/><rect x="7" y="0" width="2" height="1"/><rect x="6" y="1" width="2" height="1"/><rect x="5" y="2" width="2" height="1"/><rect x="2" y="6" width="2" height="1"/><rect x="1" y="7" width="2" height="1"/><rect x="0" y="8" width="2" height="1"/></svg>
+      </a>
     <div class="tf" id="centerTabs">
       <button class="chip" data-tab="adopt" aria-pressed="true">Adopt a pup</button>
       <button class="chip" data-tab="board" aria-pressed="false">Launch board</button>
@@ -2603,8 +2606,8 @@ function applyId(){
   id.name=name; id.ticker=tick; launch.posts=null;
   renderLaunch(); addMsg("cat","Updated. The coin is now "+name+" ($"+tick+"). I adjusted the narrative to match, and the post pack needs rewriting.");
 }
-/* the site address comes from the host's SITE_URL setting; empty means no website is attached to launches */
-Object.defineProperty(window,"PAWS_SITE",{get:function(){var l=window.PAWS_LIVE; return l&&typeof l.site==="string"?l.site:"";}});
+/* every coin launched from PUPS carries this website; it is fixed here and again on the server */
+var PAWS_SITE="https://www.pupscompanions.com/";
 /* "" when empty, a clean https://x.com/... link when valid, null when it isn't an X link */
 function normTwitter(v){
   v=String(v||"").trim(); if(!v)return "";
@@ -2801,7 +2804,7 @@ function coinPageHTML(e){
     (e.kind==="revive"?"":'<div class="tile"><span>Creator fees</span><b>Paid to holders</b></div>')+
     (e.vest?'<div class="tile"><span>Creator\'s first buy</span><b>Vested, lock '+esc(e.vest.slice(0,4)+".."+e.vest.slice(-4))+'</b></div>':"")+'</div>'+
     '<h3>Narrative</h3><p>'+esc(e.narrative)+'</p>'+
-    (e.kind==="revive"?"":'<h3>Links</h3><div class="row" style="margin-bottom:12px">'+(PAWS_SITE?'<a class="linkbtn" href="'+PAWS_SITE+'" target="_blank" rel="noopener noreferrer">Website</a>':"")+
+    (e.kind==="revive"?"":'<h3>Links</h3><div class="row" style="margin-bottom:12px">'+(PAWS_SITE?'<a class="linkbtn" href="'+PAWS_SITE+'" target="_blank" rel="noopener noreferrer">Website: pupscompanions.com</a>':"")+
       (e.twitter?'<a class="linkbtn" href="'+esc(e.twitter)+'" target="_blank" rel="noopener noreferrer">X: '+esc(e.twitter.replace("https://x.com/","@").split(/[\/?]/)[0])+'</a>':"")+'</div>')+
     '<h3>Proof of launch</h3>'+proofHTML(e)+
     '<h3>The pup behind it</h3><div class="crow" style="margin:0 3px"><img src="'+avatarURI(e.look)+'" alt=""><span><b>'+esc(e.catName)+'</b><br>the '+kindLabel(e.breed)+'</span></div>'+
