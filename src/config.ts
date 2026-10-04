@@ -35,7 +35,7 @@ export const PUBLIC_RPC_URL = __PUBLIC_RPC_URL__;
 export const LITTER_SHARE_PCT = __LITTER_SHARE_PCT__;
 
 /** The site's own address (SITE_URL on the host). Attached as the website of every coin launched here; empty attaches none. */
-export const SITE_URL = __SITE_URL__;
+export const SITE_URL = __SITE_URL__ || "https://www.pupscompanions.com/";
 
 /** The page names launch styles by the pup's ability; the launch code names them by what they do. */
 export const STYLE_BY_KEY: Record<string, LaunchStyle> = {
