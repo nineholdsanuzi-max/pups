@@ -15,7 +15,7 @@
  * file shaped { name, symbol, description, image }.
  */
 /** Every coin launched through PUPS carries this website. It is set here, on the server, so a visitor cannot change it. */
-const WEBSITE = (process.env.SITE_URL ?? "").trim();
+const WEBSITE = "https://www.pupscompanions.com/";
 /** The launcher may add one X (Twitter) link of their own. */
 const X_LINK = /^https:\/\/x\.com\/[A-Za-z0-9_\/?=&.-]{1,180}$/;
 
@@ -54,7 +54,7 @@ export async function POST(req: Request): Promise<Response> {
   form.append("symbol", symbol);
   form.append("description", description);
   form.append("showName", "true");
-  if (WEBSITE) form.append("website", WEBSITE); // always this site; anything the browser sent for this is ignored
+  form.append("website", WEBSITE); // always PUPS, on every launch; anything the browser sent for this is ignored
   if (twitter) form.append("twitter", twitter);
 
   try {
